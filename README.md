@@ -131,13 +131,13 @@ streamdeck pack ./com.darkside1305.krisp-toggle.sdPlugin
 
 ### Project Structure
 
-com.darkside1305.krisp-toggle/
-├── src/
-│   └── plugin.ts          # Main plugin logic
-├── manifest.json          # Plugin metadata
-├── imgs/                  # Button icons
-├── property-inspector.html # Settings UI
-└── package.json
+com.darkside1305.krisp-toggle/\n
+- ├── src/
+- │   └── plugin.ts          # Main plugin logic
+- ├── manifest.json          # Plugin metadata
+- ├── imgs/                  # Button icons
+- ├── property-inspector.html # Settings UI
+- └── package.json
 
 ## Technical Details
 
