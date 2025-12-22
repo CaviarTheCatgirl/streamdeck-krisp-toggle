@@ -1,6 +1,6 @@
 {
 	"Name": "Krisp Toggle",
-	"Version": "1.0.0.1",
+	"Version": "1.0.0.2",
 	"Author": "CaviarTheCatgirl",
 	"Actions": [
 		{
@@ -31,7 +31,7 @@
 	"Category": "Discord",
 	"CategoryIcon": "imgs/plugin/category-icon",
 	"CodePath": "bin/plugin.js",
-	"Description": "Toggle Discord Krisp noise suppression. Requires the manual Plugin on Github: (link)",
+	"Description": "Toggle Discord Krisp noise suppression.",
 	"Icon": "imgs/plugin/marketplace",
 	"SDKVersion": 3,
 	"Software": {
