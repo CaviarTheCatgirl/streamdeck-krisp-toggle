@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <title>Krisp Toggle</title>
+    <meta charset="utf-8" />
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: #d0d0d0;
+            background-color: #2d2d2d;
+        }
+        .info {
+            text-align: center;
+            padding: 20px;
+        }
+        .info h2 {
+            margin: 0 0 20px 0;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .info p {
+            margin: 0 0 10px 0;
+            font-size: 13px;
+            color: #999;
+            line-height: 1.5;
+        }
+        .status {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #3a3a3a;
+        }
+        .status-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 10px 0;
+            font-size: 13px;
+        }
+        .status-label {
+            color: #d0d0d0;
+        }
+        .status-value {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .indicator.online {
+            background-color: #4caf50;
+            box-shadow: 0 0 8px #4caf50;
+        }
+        .indicator.offline {
+            background-color: #f44336;
+            box-shadow: 0 0 8px #f44336;
+        }
+        .indicator.checking {
+            background-color: #ff9800;
+            box-shadow: 0 0 8px #ff9800;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .warning {
+            margin: 15px 0;
+            padding: 12px;
+            border-radius: 6px;
+            background-color: #3a2a1a;
+            border-left: 3px solid #ff9800;
+            font-size: 12px;
+            line-height: 1.6;
+            text-align: left;
+        }
+        .warning a {
+            color: #4fc3f7;
+            text-decoration: none;
+        }
+        .warning a:hover {
+            text-decoration: underline;
+        }
+        .success {
+            margin: 15px 0;
+            padding: 12px;
+            border-radius: 6px;
+            background-color: #1a3a1a;
+            border-left: 3px solid #4caf50;
+            font-size: 12px;
+            line-height: 1.6;
+            color: #90ee90;
+        }
+    </style>
+</head>
+<body>
+    <div class="info">
+        <h2>Krisp Toggle</h2>
+        <p>Toggle Discord Krisp noise suppression</p>
+        
+        <div class="status">
+            <div class="status-item">
+                <span class="status-label">Discord Status:</span>
+                <span class="status-value">
+                    <span class="indicator checking" id="discord-indicator"></span>
+                    <span id="discord-status">Checking...</span>
+                </span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">Vencord Plugin:</span>
+                <span class="status-value">
+                    <span class="indicator checking" id="plugin-indicator"></span>
+                    <span id="plugin-status">Checking...</span>
+                </span>
+            </div>
+        </div>
+
+        <div id="warning-message" style="display: none;"></div>
+        <div id="success-message" style="display: none;"></div>
+    </div>
+
+    <script>
+        const DISCORD_API_URL = "http://localhost:37320";
+
+        async function checkDiscordStatus() {
+            try {
+                const response = await fetch(`${DISCORD_API_URL}/health`, {
+                    signal: AbortSignal.timeout(2000)
+                });
+                
+                if (response.ok) {
+                    return { discord: true };
+                }
+                return { discord: false };
+            } catch (error) {
+                return { discord: false };
+            }
+        }
+
+        async function checkPluginStatus() {
+            try {
+                const response = await fetch(`${DISCORD_API_URL}/plugin-check`, {
+                    signal: AbortSignal.timeout(2000)
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    return { plugin: data.installed || false };
+                }
+                return { plugin: false };
+            } catch (error) {
+                return { plugin: false };
+            }
+        }
+
+        async function updateStatus() {
+            const discordIndicator = document.getElementById('discord-indicator');
+            const discordStatus = document.getElementById('discord-status');
+            const pluginIndicator = document.getElementById('plugin-indicator');
+            const pluginStatus = document.getElementById('plugin-status');
+            const warningMessage = document.getElementById('warning-message');
+            const successMessage = document.getElementById('success-message');
+
+            // Check Discord
+            const discordResult = await checkDiscordStatus();
+            
+            if (discordResult.discord) {
+                discordIndicator.className = 'indicator online';
+                discordStatus.textContent = 'Online';
+                
+                // Check plugin
+                const pluginResult = await checkPluginStatus();
+                
+                if (pluginResult.plugin) {
+                    pluginIndicator.className = 'indicator online';
+                    pluginStatus.textContent = 'Installed';
+                    warningMessage.style.display = 'none';
+                    successMessage.style.display = 'block';
+                    successMessage.className = 'success';
+                    successMessage.textContent = '✓ Everything is working! Press the button to toggle Krisp.';
+                } else {
+                    pluginIndicator.className = 'indicator offline';
+                    pluginStatus.textContent = 'Not Found';
+                    successMessage.style.display = 'none';
+                    warningMessage.style.display = 'block';
+                    warningMessage.className = 'warning';
+                    warningMessage.innerHTML = `
+                        <strong>⚠ Vencord Plugin Not Found</strong><br>
+                        The Krisp Toggle plugin needs to be installed in Vencord.<br>
+                        <a href="https://github.com/CaviarTheCatgirl/vencord-krisp-toggle" target="_blank">Get the plugin here →</a>
+                    `;
+                }
+            } else {
+                discordIndicator.className = 'indicator offline';
+                discordStatus.textContent = 'Offline';
+                pluginIndicator.className = 'indicator offline';
+                pluginStatus.textContent = 'Unknown';
+                successMessage.style.display = 'none';
+                warningMessage.style.display = 'block';
+                warningMessage.className = 'warning';
+                warningMessage.innerHTML = `
+                    <strong>⚠ Discord Not Running</strong><br>
+                    Make sure Discord is running and the Vencord Krisp Toggle plugin is installed.<br>
+                    <a href="https://github.com/CaviarTheCatgirl/vencord-krisp-toggle" target="_blank">Get the plugin here →</a>
+                `;
+            }
+        }
+
+        // Initial check
+        updateStatus();
+
+        // Refresh every 5 seconds
+        setInterval(updateStatus, 5000);
+    </script>
+</body>
+</html>

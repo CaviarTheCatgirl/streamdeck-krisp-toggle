@@ -1,0 +1,55 @@
+{
+	"Name": "Krisp Toggle",
+	"Version": "1.0.0.0",
+	"Author": "CaviarTheCatgirl",
+	"Actions": [
+		{
+			"Name": "Toggle Krisp",
+			"UUID": "com.caviarthecatgirl.krisp-toggle.toggle",
+			"Icon": "imgs/plugin/icon",
+			"Tooltip": "Toggle Discord Krisp noise suppression.",
+			"PropertyInspectorPath": "ui/krisp-toggle.html",
+			"SupportedInMultiActions": true,
+			"DisableAutomaticStates": true,
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Name": "Krisp Off",
+					"Image": "imgs/actions/krisp-toggle/KrispOff",
+					"TitleAlignment": "middle"
+				},
+				{
+					"Name": "Krisp On",
+					"Image": "imgs/actions/krisp-toggle/KrispOn",
+					"TitleAlignment": "middle"
+				}
+			]
+		}
+	],
+	"Category": "Discord",
+	"CategoryIcon": "imgs/plugin/category-icon",
+	"CodePath": "bin/plugin.js",
+	"Description": "Toggle Discord Krisp noise suppression. Requires the manual Plugin on Github: (link)",
+	"Icon": "imgs/plugin/marketplace",
+	"SDKVersion": 3,
+	"Software": {
+		"MinimumVersion": "6.9"
+	},
+	"OS": [
+		{
+			"Platform": "mac",
+			"MinimumVersion": "12"
+		},
+		{
+			"Platform": "windows",
+			"MinimumVersion": "10"
+		}
+	],
+	"Nodejs": {
+		"Version": "20",
+		"Debug": "enabled"
+	},
+	"UUID": "com.caviarthecatgirl.krisp-toggle"
+}
