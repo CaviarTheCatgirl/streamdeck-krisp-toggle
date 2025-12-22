@@ -131,7 +131,7 @@ streamdeck pack ./com.caviarthecatgirl.krisp-toggle.sdPlugin
 
 ### Project Structure
 
-- com.caviarthecatgirl.krisp-toggle/
+com.caviarthecatgirl.krisp-toggle/\n
 - ├── src/
 - │   └── plugin.ts          # Main plugin logic
 - ├── manifest.json          # Plugin metadata
