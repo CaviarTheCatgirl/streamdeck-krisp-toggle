@@ -6,7 +6,7 @@ import path from "node:path";
 import url from "node:url";
 
 const isWatching = !!process.env.ROLLUP_WATCH;
-const sdPlugin = "com.darkside1305.krisp-toggle.sdPlugin";
+const sdPlugin = "com.caviarthecatgirl.krisp-toggle.sdPlugin";
 
 /**
  * @type {import('rollup').RollupOptions}

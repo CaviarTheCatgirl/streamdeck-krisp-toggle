@@ -1,7 +1,7 @@
 {
     "scripts": {
         "build": "rollup -c",
-        "watch": "rollup -c -w --watch.onEnd=\"streamdeck restart com.darkside1305.krisp-toggle\""
+        "watch": "rollup -c -w --watch.onEnd=\"streamdeck restart com.caviarthecatgirl.krisp-toggle\""
     },
     "type": "module",
     "devDependencies": {

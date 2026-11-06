@@ -22,13 +22,13 @@ Control Discord Krisp noise suppression directly from your Elgato Stream Deck.
 ### Prerequisites
 1. **Elgato Stream Deck** (any model)
 2. **Discord Desktop** with [Vencord](https://vencord.dev/) installed
-3. **Vencord Krisp Toggle Plugin** - [Get it here](https://github.com/DarkSide1305/vencord-krisp-toggle)
+3. **Vencord Krisp Toggle Plugin** - [Get it here](https://github.com/CaviarTheCatgirl/vencord-krisp-toggle)
 
 ## Installation
 
 ### Method 1: Direct Download (Recommended)
 
-1. Download the latest `.streamDeckPlugin` file from [Releases](https://github.com/DarkSide1305/streamdeck-krisp-toggle/releases)
+1. Download the latest `.streamDeckPlugin` file from [Releases](https://github.com/CaviarTheCatgirl/streamdeck-krisp-toggle/releases)
 2. Double-click the downloaded file
 3. Stream Deck software will automatically install the plugin
 4. The "Krisp Toggle" action will appear in your Stream Deck actions list
@@ -36,7 +36,7 @@ Control Discord Krisp noise suppression directly from your Elgato Stream Deck.
 ### Method 2: Manual Installation
 
 1. Download and extract the latest release
-2. Copy the `com.darkside1305.krisp-toggle.sdPlugin` folder to:
+2. Copy the `com.caviarthecatgirl.krisp-toggle.sdPlugin` folder to:
    - **Windows**: `%APPDATA%\Elgato\StreamDeck\Plugins\`
    - **macOS**: `~/Library/Application Support/com.elgato.StreamDeck/Plugins/`
 3. Restart Stream Deck software
@@ -44,7 +44,7 @@ Control Discord Krisp noise suppression directly from your Elgato Stream Deck.
 ## Setup
 
 1. **Install Vencord Plugin First**:
-   - Follow the [Vencord Krisp Toggle setup guide](https://github.com/DarkSide1305/vencord-krisp-toggle)
+   - Follow the [Vencord Krisp Toggle setup guide](https://github.com/CaviarTheCatgirl/vencord-krisp-toggle)
    - Make sure Discord is running and the plugin is enabled
 
 2. **Add to Stream Deck**:
@@ -96,7 +96,7 @@ Control Discord Krisp noise suppression directly from your Elgato Stream Deck.
 ### "Plugin Not Found" in settings
 **Cause**: Vencord Krisp Toggle plugin not installed in Discord
 
-**Solution**: Install the [Vencord plugin](https://github.com/DarkSide1305/vencord-krisp-toggle) first
+**Solution**: Install the [Vencord plugin](https://github.com/CaviarTheCatgirl/vencord-krisp-toggle) first
 
 ## Development
 
@@ -107,7 +107,7 @@ Control Discord Krisp noise suppression directly from your Elgato Stream Deck.
 ### Setup
 ```bash
 # Clone the repository
-git clone https://github.com/DarkSide1305/streamdeck-krisp-toggle.git
+git clone https://github.com/CaviarTheCatgirl/streamdeck-krisp-toggle.git
 cd streamdeck-krisp-toggle
 
 # Install dependencies
@@ -126,12 +126,12 @@ npm run watch
 npm run build
 
 # Use Stream Deck Distribution Tool
-streamdeck pack ./com.darkside1305.krisp-toggle.sdPlugin
+streamdeck pack ./com.caviarthecatgirl.krisp-toggle.sdPlugin
 ```
 
 ### Project Structure
 
-com.darkside1305.krisp-toggle/\n
+com.caviarthecatgirl.krisp-toggle/\n
 - ├── src/
 - │   └── plugin.ts          # Main plugin logic
 - ├── manifest.json          # Plugin metadata
@@ -192,10 +192,10 @@ GPL-3.0-or-later
 
 ## Credits
 
-**Created by**: DarkSide1305
+**Created by**: CaviarTheCatgirl
 
 **Related Projects**:
-- [Vencord Krisp Toggle](https://github.com/DarkSide1305/vencord-krisp-toggle) - Required Discord plugin
+- [Vencord Krisp Toggle](https://github.com/CaviarTheCatgirl/vencord-krisp-toggle) - Required Discord plugin
 
 **Built with**:
 - [Elgato Stream Deck SDK](https://developer.elgato.com/documentation/stream-deck/)
@@ -204,9 +204,9 @@ GPL-3.0-or-later
 
 ## Support
 
-- 🐛 **Bug Reports**: [Open an issue](https://github.com/DarkSide1305/streamdeck-krisp-toggle/issues)
-- 💡 **Feature Requests**: [Open an issue](https://github.com/DarkSide1305/streamdeck-krisp-toggle/issues)
-- 📖 **Documentation**: [Wiki](https://github.com/DarkSide1305/streamdeck-krisp-toggle/wiki) (coming soon)
+- 🐛 **Bug Reports**: [Open an issue](https://github.com/CaviarTheCatgirl/streamdeck-krisp-toggle/issues)
+- 💡 **Feature Requests**: [Open an issue](https://github.com/CaviarTheCatgirl/streamdeck-krisp-toggle/issues)
+- 📖 **Documentation**: [Wiki](https://github.com/CaviarTheCatgirl/streamdeck-krisp-toggle/wiki) (coming soon)
 
 ## Changelog
 

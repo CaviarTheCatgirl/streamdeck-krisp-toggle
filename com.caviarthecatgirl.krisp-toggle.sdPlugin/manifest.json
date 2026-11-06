@@ -1,11 +1,11 @@
 {
 	"Name": "Krisp Toggle",
 	"Version": "1.0.0.2",
-	"Author": "DarkSide1305",
+	"Author": "CaviarTheCatgirl",
 	"Actions": [
 		{
 			"Name": "Toggle Krisp",
-			"UUID": "com.darkside1305.krisp-toggle.toggle",
+			"UUID": "com.caviarthecatgirl.krisp-toggle.toggle",
 			"Icon": "imgs/plugin/icon",
 			"Tooltip": "Toggle Discord Krisp noise suppression.",
 			"PropertyInspectorPath": "ui/krisp-toggle.html",
@@ -51,5 +51,5 @@
 		"Version": "20",
 		"Debug": "enabled"
 	},
-	"UUID": "com.darkside1305.krisp-toggle"
+	"UUID": "com.caviarthecatgirl.krisp-toggle"
 }

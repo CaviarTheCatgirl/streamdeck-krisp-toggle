@@ -15,7 +15,7 @@ type ActionInstance = {
 /**
  * Krisp Toggle action - toggles Discord Krisp noise suppression
  */
-@action({ UUID: "com.darkside1305.krisp-toggle.toggle" })
+@action({ UUID: "com.caviarthecatgirl.krisp-toggle.toggle" })
 export class KrispToggleAction extends SingletonAction<KrispToggleSettings> {
     private pollInterval: NodeJS.Timeout | null = null;
     private visibleActions = new Map<string, ActionInstance>();
